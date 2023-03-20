@@ -39,64 +39,54 @@ const Accueil = () => {
     </form>
     <section>
       <h2>Nos produits :</h2>
-      <a href="classic2021domainetariquet.html">
-        <article>
-          <h3>CLASSIC 2021 - DOMAINE TARIQUET</h3>
-          <p>Vin blanc</p>
-          <p>Année : 2021</p>
-          <img src="./images/classic-2021-domaine-tariquet.png" alt="Bouteille de vin Tariquet Classic 2021" />
-          <footer>
-            <p>prix : 7€65</p>
-          </footer>
-        </article>
-      </a>
-      <a href="harmoniedegascogneblanc2022domainepellehaut.html">
-        <article>
-          <h3>HARMONIE DE GASCOGNE BLANC 2022 - DOMAINE PELLEHAUT</h3>
-          <p>Vin blanc</p>
-          <p>Année : 2022</p>
-          <img src="./images/harmonie-de-gascogne-blanc-2022-domaine-pellehaut.png"
-            alt="Bouteille de vin Harmonie de Gascogne Blanc 2022" />
-          <footer>
-            <p>prix : 9€20</p>
-          </footer>
-        </article>
-      </a>
-      <a href="leclat2021domainedejoy.html">
-        <article>
-          <h3>L'ÉCLAT 2021 - DOMAINE DE JOŸ</h3>
-          <p>Vin blanc</p>
-          <p>Année : 2021</p>
-          <img src="./images/l-eclat-2021-domaine-de-joy.png" alt="Bouteille de vin L'éclat 2021 - Domaine de Joÿ" />
-          <footer>
-            <p>prix : 7€60</p>
-          </footer>
-        </article>
-      </a>
-      <a href="montagnenoire2021chateauauzias.html">
-        <article>
-          <h3>MONTAGNE NOIRE 2021 - CHATEAU AUZIAS</h3>
-          <p>Vin rouge</p>
-          <p>Année : 2021</p>
-          <img src="./images/montagne-noire-2021-chateau-auzias.png"
-            alt="Bouteille de vin Montagne Noire 2021 - Chateau Auzias" />
-          <footer>
-            <p>prix : 6€90</p>
-          </footer>
-        </article>
-      </a>
-      <a href="ubybyorose262021domaineuby.html">
-        <article>
-          <h3>UBY BYO ROSE N°26 2021 - DOMAINE UBY</h3>
-          <p>Vin rosé</p>
-          <p>Année : 2021</p>
-          <img src="./images/uby-byo-rose-n26-2021-domaine-uby.png"
-            alt="Bouteille de vin Uby Byo Rosé N°26 2021 - Domaine Uby" />
-          <footer>
-            <p>prix : 7€90</p>
-          </footer>
-        </article>
-      </a>
+      <article onClick={() => {window.location="/articles/tariquet2021";}}>
+        <h3>CLASSIC 2021 - DOMAINE TARIQUET</h3>
+        <p>Vin blanc</p>
+        <p>Année : 2021</p>
+        <img src="./images/classic-2021-domaine-tariquet.png" alt="Bouteille de vin Tariquet Classic 2021" />
+        <footer>
+          <p>prix : 7€65</p>
+        </footer>
+      </article>
+      <article onClick={() => {window.location="harmoniedegascogneblanc2022domainepellehaut.html";}}>
+        <h3>HARMONIE DE GASCOGNE BLANC 2022 - DOMAINE PELLEHAUT</h3>
+        <p>Vin blanc</p>
+        <p>Année : 2022</p>
+        <img src="./images/harmonie-de-gascogne-blanc-2022-domaine-pellehaut.png"
+          alt="Bouteille de vin Harmonie de Gascogne Blanc 2022" />
+        <footer>
+          <p>prix : 9€20</p>
+        </footer>
+      </article>
+      <article onClick={() => {window.location="leclat2021domainedejoy.html";}}>
+        <h3>L'ÉCLAT 2021 - DOMAINE DE JOŸ</h3>
+        <p>Vin blanc</p>
+        <p>Année : 2021</p>
+        <img src="./images/l-eclat-2021-domaine-de-joy.png" alt="Bouteille de vin L'éclat 2021 - Domaine de Joÿ" />
+        <footer>
+          <p>prix : 7€60</p>
+        </footer>
+      </article>
+      <article onClick={() => {window.location="montagnenoire2021chateauauzias.html";}}>
+        <h3>MONTAGNE NOIRE 2021 - CHATEAU AUZIAS</h3>
+        <p>Vin rouge</p>
+        <p>Année : 2021</p>
+        <img src="./images/montagne-noire-2021-chateau-auzias.png"
+          alt="Bouteille de vin Montagne Noire 2021 - Chateau Auzias" />
+        <footer>
+          <p>prix : 6€90</p>
+        </footer>
+      </article>
+      <article onClick={() => {window.location="ubybyorose262021domaineuby.html";}}>
+        <h3>UBY BYO ROSE N°26 2021 - DOMAINE UBY</h3>
+        <p>Vin rosé</p>
+        <p>Année : 2021</p>
+        <img src="./images/uby-byo-rose-n26-2021-domaine-uby.png"
+          alt="Bouteille de vin Uby Byo Rosé N°26 2021 - Domaine Uby" />
+        <footer>
+          <p>prix : 7€90</p>
+        </footer>
+      </article>
     </section>
   </main>
       <Footer />
