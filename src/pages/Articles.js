@@ -1,14 +1,13 @@
 // libs
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
-
-// composants
-import Header from "./../components/Header";
-import Main from "./../components/Main";
-import Footer from "./../components/Footer";
+import { Link, useParams } from "react-router-dom";
 
 // contexte global
 import { context } from "../context";
+
+// composants
+import Header from "./../components/Header";
+import Footer from "./../components/Footer";
 
 
 const Articles = () => {
@@ -24,27 +23,26 @@ const Articles = () => {
   return (
     <>
       <Header />
-      <Main />
       <section>
         {productIndex === -1 ? (
         <article>
           <p>Aucun article avec cet identifiant.</p>
-          <p>Cliquez <a href="accueil">ici</a> pour revenir à l'accueil.</p>
+          <p>Cliquez <Link to="accueil">ici</Link> pour revenir à l'accueil.</p>
         </article>
         ) : (
         <article>
-          <h3>{products[productIndex]["intitule"]}</h3>
+          <h3>{products[productIndex]["name"]}</h3>
           <p>{products[productIndex]["type"]}</p>
-          <p>Année : {products[productIndex]["annee"]}</p>
+          <p>Année : {products[productIndex]["year"]}</p>
           <p>{products[productIndex]["alcool"]}</p>
-          <p>{products[productIndex]["contenance"]}</p>
+          <p>{products[productIndex]["volume"]}</p>
           <p>
-            <strong>{products[productIndex]["description strong"]}</strong><br />
-            {products[productIndex]["description"]}
+            <strong>{products[productIndex]["descriptionShort"]}</strong><br />
+            {products[productIndex]["descriptionLong"]}
           </p>
-          <img src={`../images/${products[productIndex]["image source"]}`} alt={products[productIndex]["image alt"]} />
+          <img src={`../images/${products[productIndex]["imageFileName"]}`} alt={products[productIndex]["imageAlt"]} />
           <footer>
-            <p>prix : {products[productIndex]["prix"]}</p>
+            <p>prix : {products[productIndex]["price"]}</p>
             <form>
               <label for="quantity">Quantité :</label><br />
               <input type="number" id="quantity" name="quantity" value="1" step="1" min="1" max="100" /><br />

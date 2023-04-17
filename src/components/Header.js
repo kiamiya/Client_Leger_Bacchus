@@ -1,3 +1,7 @@
+// libs
+import { Link } from "react-router-dom";
+
+
 const Header = () => {
   return (
     <header>
@@ -8,9 +12,9 @@ const Header = () => {
           </li>
         </ul>
         <ul>
-          <li><a href="./signup.html">Inscription</a></li>
-          <li><a href="./signin.html">Connexion</a></li>
-          <li><a href="./basket.html">Panier</a></li>
+          <li><Link to="signup">Inscription</Link></li>
+          <li><Link to="signin">Connexion</Link></li>
+          <li><Link to="panier">Panier</Link></li>
         </ul>
       </nav>
     </header>

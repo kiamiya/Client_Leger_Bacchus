@@ -1,12 +1,13 @@
 // libs
 import { useContext } from "react";
+import { Link } from "react-router-dom";
+
+// contexte global
+import { context } from "../context";
 
 // composants
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
-
-// contexte global
-import { context } from "../context";
 
 
 const Accueil = () => {
@@ -36,6 +37,7 @@ const Accueil = () => {
             </form>
           </article>
         </dialog>
+        */}
         <form>
           <label for="search">Rechercher :</label><br />
           <input type="search" id="search" name="search" value="" /><br />
@@ -49,18 +51,17 @@ const Accueil = () => {
             <option value="digestifs">Digestifs</option>
           </select>
         </form>
-        */}
+        <h2>Nos produits :</h2>
         <section>
-          <h2>Nos produits :</h2>
           {products.map((product) => {
             return (
             <article key={product["id"]}>
-              <h3>{product["intitule"]}</h3>
+              <h3>{product["name"]}</h3>
               <p>{product["type"]}</p>
-              <p>Année : {product["annee"]}</p>
-              <img src={`../images/${product["image source"]}`} alt={product["image alt"]} />
-              <p>prix : {product["prix"]}</p>
-              <p><a href={`/articles/${product["id"]}`}>Voir fiche produit</a></p>
+              <p>Année : {product["year"]}</p>
+              <img src={`../images/${product["imageFileName"]}`} alt={product["imageAlt"]} />
+              <p>prix : {product["price"]}</p>
+              <p><Link to={`/articles/${product["id"]}`}>Voir fiche produit</Link></p>
             </article> 
             );
           })}
