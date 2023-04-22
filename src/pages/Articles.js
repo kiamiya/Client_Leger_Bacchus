@@ -1,5 +1,5 @@
 // libs
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 // contexte global
@@ -15,10 +15,12 @@ const Articles = () => {
   const { articleId } = useParams();
 
   // variable globale
-  const { products } = useContext(context);
+  const { products, basket, setBasket } = useContext(context);
 
   // récupère l'index du produit dont l'id correspond à celui de l'URL
   const productIndex = products.findIndex((element) => element["id"] === articleId);
+
+  const [quantity, setQuantity] = useState("1");
 
   return (
     <>
@@ -44,9 +46,24 @@ const Articles = () => {
           <footer>
             <p>prix : {products[productIndex]["price"]}</p>
             <form>
-              <label for="quantity">Quantité :</label><br />
-              <input type="number" id="quantity" name="quantity" value="1" step="1" min="1" max="100" /><br />
-              <button>Ajouter au panier</button>
+              <label htmlFor="quantity">Quantité :</label><br />
+              <input type="number" id="quantity" name="quantity" value={quantity} step="1" min="1" max="100" onChange={(e) => {setQuantity(e.target.value)}} /><br />
+              <Link to="accueil" >
+                <button onClick={
+                  (e) => {
+                    const priceFloat = Number.parseFloat(products[productIndex]["price"].replace("€", "."));
+                    const quantityNumber = Number.parseInt(quantity);
+                    const totalNumber = (priceFloat * quantityNumber).toFixed(2).replace(".", "€");
+
+                    setBasket([...basket, {
+                      "id": articleId,
+                      "name": products[productIndex]["name"],
+                      "price": products[productIndex]["price"],
+                      "quantity": quantity,
+                      "total": totalNumber.toString()
+                    }]);
+                }}>Ajouter au panier</button>
+              </Link>
             </form>
           </footer>
         </article>

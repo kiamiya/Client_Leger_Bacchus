@@ -43,16 +43,16 @@ const Accueil = () => {
         </dialog>
         */}
         <form>
-          <label for="search">Rechercher :</label><br />
+          <label htmlFor="search">Rechercher :</label><br />
           <input type="search" id="search" name="search" value={search} onChange={(e) => {setSearch(e.target.value)}} /><br />
-          <label for="family">Sélectionner une famille :</label>
+          <label htmlFor="family">Sélectionner une famille :</label>
           <select name="family" id="family" onChange={(e) => {setFamily(e.target.value);}}>
             <option value="tous">Toutes</option>
             <option value="Vin rouge">Rouges</option>
             <option value="Vin blanc">Blancs</option>
             <option value="Vin rosé">Rosés</option>
           </select>
-          <label for="order">Trier</label><br />
+          <label htmlFor="order">Trier</label><br />
           <input type="checkbox" id="order" name="order" value="" onClick={(e) => {setSort(e.target.checked)}} /><br />
         </form>
         <h2>Nos produits :</h2>
