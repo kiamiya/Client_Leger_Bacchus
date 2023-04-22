@@ -56,12 +56,17 @@ const Accueil = () => {
         <section>
           {
           products
+            // filtre sur les familles
+            // aucun filtre si valeur "tous"
             .filter((product) => {
               return family === "tous" ? true : product["type"] === family;
             })
+            // filtre sur le texte de recherche
+            // aucun filtre si texte vide
             .filter((product) => {
               return search === "" ? true : product["name"].toLowerCase().includes(search.toLowerCase());
             })
+            // génère une carte pour chaque vin de la liste finale
             .map((product) => {
               return (
               <article key={product["id"]}>
