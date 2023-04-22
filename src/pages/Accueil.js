@@ -16,6 +16,7 @@ const Accueil = () => {
   
   const [family, setFamily] = useState("tous");
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState(false);
 
   return (
     <>
@@ -51,6 +52,8 @@ const Accueil = () => {
             <option value="Vin blanc">Blancs</option>
             <option value="Vin rosé">Rosés</option>
           </select>
+          <label for="order">Trier</label><br />
+          <input type="checkbox" id="order" name="order" value="" onClick={(e) => {setSort(e.target.checked)}} /><br />
         </form>
         <h2>Nos produits :</h2>
         <section>
@@ -65,6 +68,10 @@ const Accueil = () => {
             // aucun filtre si texte vide
             .filter((product) => {
               return search === "" ? true : product["name"].toLowerCase().includes(search.toLowerCase());
+            })
+            // tri
+            .sort((product1, product2) => {
+              return sort ? product1["name"] > product2["name"] : 0;
             })
             // génère une carte pour chaque vin de la liste finale
             .map((product) => {
