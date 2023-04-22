@@ -1,5 +1,5 @@
 // libs
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 // contexte global
@@ -13,6 +13,9 @@ import Footer from "./../components/Footer";
 const Accueil = () => {
   // variable globale
   const { products } = useContext(context);
+  
+  const [family, setFamily] = useState("tous");
+  const [search, setSearch] = useState("");
 
   return (
     <>
@@ -40,31 +43,38 @@ const Accueil = () => {
         */}
         <form>
           <label for="search">Rechercher :</label><br />
-          <input type="search" id="search" name="search" value="" /><br />
+          <input type="search" id="search" name="search" value={search} onChange={(e) => {setSearch(e.target.value)}} /><br />
           <label for="family">Sélectionner une famille :</label>
-          <select name="family" id="family">
+          <select name="family" id="family" onChange={(e) => {setFamily(e.target.value);}}>
             <option value="tous">Toutes</option>
-            <option value="rouges">Rouges</option>
-            <option value="blancs">Blancs</option>
-            <option value="rosés">Rosés</option>
-            <option value="pétillants">Pétillants</option>
-            <option value="digestifs">Digestifs</option>
+            <option value="Vin rouge">Rouges</option>
+            <option value="Vin blanc">Blancs</option>
+            <option value="Vin rosé">Rosés</option>
           </select>
         </form>
         <h2>Nos produits :</h2>
         <section>
-          {products.map((product) => {
-            return (
-            <article key={product["id"]}>
-              <h3>{product["name"]}</h3>
-              <p>{product["type"]}</p>
-              <p>Année : {product["year"]}</p>
-              <img src={`../images/${product["imageFileName"]}`} alt={product["imageAlt"]} />
-              <p>prix : {product["price"]}</p>
-              <p><Link to={`/articles/${product["id"]}`}>Voir fiche produit</Link></p>
-            </article> 
-            );
-          })}
+          {
+          products
+            .filter((product) => {
+              return family === "tous" ? true : product["type"] === family;
+            })
+            .filter((product) => {
+              return search === "" ? true : product["name"].toLowerCase().includes(search.toLowerCase());
+            })
+            .map((product) => {
+              return (
+              <article key={product["id"]}>
+                <h3>{product["name"]}</h3>
+                <p>{product["type"]}</p>
+                <p>Année : {product["year"]}</p>
+                <img src={`../images/${product["imageFileName"]}`} alt={product["imageAlt"]} />
+                <p>prix : {product["price"]}</p>
+                <p><Link to={`/articles/${product["id"]}`}>Voir fiche produit</Link></p>
+              </article> 
+              );
+            })
+          }
         </section>
       </main>
       <Footer />
