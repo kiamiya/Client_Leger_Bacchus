@@ -14,7 +14,7 @@ const Panier = () => {
   // variable globale
   const { basket } = useContext(context);
 
-  const total = 0.00;
+  const total = basket.reduce((accumulator, currentValue) => {return accumulator + currentValue["total"];}, 0);
 
   return (
     <>
@@ -28,15 +28,15 @@ const Panier = () => {
             return (
               <article key={item["id"]}>
                 <h3>{item["name"]}</h3>
-                <p>Prix : {item["price"]}</p>
+                <p>Prix : {item["price"].toFixed(2).replace(".", "€")}</p>
                 <p>Quantité : {item["quantity"]}</p>
-                <p>Total : {item["total"]}</p>
+                <p>Total : {item["total"].toFixed(2).replace(".", "€")}</p>
                 <p><Link to={`/articles/${item["id"]}`}>Voir fiche produit</Link></p>
               </article> 
             );
           })
         )}
-        <p>TOTAL DE VOTRE PANIER : {total}€</p>
+        <p>TOTAL DE VOTRE PANIER : {total.toFixed(2).replace(".", "€")}</p>
       </section>
       <Footer />
     </>

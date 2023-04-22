@@ -20,7 +20,10 @@ const Articles = () => {
   // récupère l'index du produit dont l'id correspond à celui de l'URL
   const productIndex = products.findIndex((element) => element["id"] === articleId);
 
-  const [quantity, setQuantity] = useState("1");
+  // récupère l'index de l'élément du panier dont l'id correspond à celui de l'URL
+  const basketIndex = basket.findIndex((element) => element["id"] === articleId);
+
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <>
@@ -44,24 +47,25 @@ const Articles = () => {
           </p>
           <img src={`../images/${products[productIndex]["imageFileName"]}`} alt={products[productIndex]["imageAlt"]} />
           <footer>
-            <p>prix : {products[productIndex]["price"]}</p>
+            <p>prix : {products[productIndex]["price"].toFixed(2).replace(".", "€")}</p>
             <form>
               <label htmlFor="quantity">Quantité :</label><br />
-              <input type="number" id="quantity" name="quantity" value={quantity} step="1" min="1" max="100" onChange={(e) => {setQuantity(e.target.value)}} /><br />
-              <Link to="accueil" >
-                <button onClick={
-                  (e) => {
-                    const priceFloat = Number.parseFloat(products[productIndex]["price"].replace("€", "."));
-                    const quantityNumber = Number.parseInt(quantity);
-                    const totalNumber = (priceFloat * quantityNumber).toFixed(2).replace(".", "€");
-
+              <input type="number" id="quantity" name="quantity" value={quantity} step="1" min="1" max="100" onChange={(e) => {setQuantity(Number.parseInt(e.target.value))}} /><br />
+              <Link to="/" >
+                <button onClick={(e) => {
+                  if (basketIndex === -1) {
                     setBasket([...basket, {
                       "id": articleId,
                       "name": products[productIndex]["name"],
                       "price": products[productIndex]["price"],
                       "quantity": quantity,
-                      "total": totalNumber.toString()
+                      "total": products[productIndex]["price"] * quantity
                     }]);
+                  } else {
+                    basket[basketIndex]["quantity"] += quantity;
+                    basket[basketIndex]["total"] += products[productIndex]["price"] * quantity;
+                  }
+
                 }}>Ajouter au panier</button>
               </Link>
             </form>

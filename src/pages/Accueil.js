@@ -69,7 +69,7 @@ const Accueil = () => {
             .filter((product) => {
               return search === "" ? true : product["name"].toLowerCase().includes(search.toLowerCase());
             })
-            // tri
+            // tri si sort == vrai
             .sort((product1, product2) => {
               return sort ? product1["name"] > product2["name"] : 0;
             })
@@ -81,7 +81,7 @@ const Accueil = () => {
                 <p>{product["type"]}</p>
                 <p>Année : {product["year"]}</p>
                 <img src={`../images/${product["imageFileName"]}`} alt={product["imageAlt"]} />
-                <p>prix : {product["price"]}</p>
+                <p>prix : {product["price"].toFixed(2).replace(".", "€")}</p>
                 <p><Link to={`/articles/${product["id"]}`}>Voir fiche produit</Link></p>
               </article> 
               );
