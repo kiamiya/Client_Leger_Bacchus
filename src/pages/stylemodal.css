@@ -1,0 +1,41 @@
+img {
+    display: block;
+    margin: auto;
+    max-height: 100%; 
+  }
+  .quantity{
+    color: #dff0d8;
+  }
+  .bouton2{
+    color: #dff0d8;;
+  }
+  .bouton{
+    color: #45322e !important;
+  }
+  .articles2 {
+
+   
+    background-color: #45322e;
+    border: 4px solid black;
+    box-shadow: 15px 10px 5px grey;
+  }
+  .footer {
+    background-color: #45322e;
+  }
+  input, select, textarea{
+    color: #dff0d8;
+}
+  .description {
+   text-align: center;
+  }
+  h3 {
+    color: #dff0d8;
+    
+  }
+  body {
+    color: #dff0d8;	
+    
+  }
+  p{
+    color: #dff0d8;
+  }

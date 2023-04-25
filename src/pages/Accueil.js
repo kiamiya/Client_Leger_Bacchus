@@ -9,6 +9,7 @@ import { context } from "../context";
 import Header from "./../components/Header";
 import Footer from "./../components/Footer";
 
+import './style.css';
 
 const Accueil = () => {
   // variable globale
@@ -56,7 +57,7 @@ const Accueil = () => {
           <input type="checkbox" id="order" name="order" value="" onClick={(e) => {setSort(e.target.checked)}} /><br />
         </form>
         <h2>Nos produits :</h2>
-        <section>
+        <section className="winechoice">
           {
           products
             // filtre sur les familles
@@ -76,13 +77,15 @@ const Accueil = () => {
             // génère une carte pour chaque vin de la liste finale
             .map((product) => {
               return (
-              <article key={product["id"]}>
-                <h3>{product["name"]}</h3>
+              <article className="articles" key={product["id"]}>
+                
+                <h3 className="title-bottle">{product["name"]}</h3>
                 <p>{product["type"]}</p>
                 <p>Année : {product["year"]}</p>
                 <img src={`../images/${product["imageFileName"]}`} alt={product["imageAlt"]} />
                 <p>prix : {product["price"].toFixed(2).replace(".", "€")}</p>
-                <p><Link to={`/articles/${product["id"]}`}>Voir fiche produit</Link></p>
+                <p ><Link className="linkproduct" to={`/articles/${product["id"]}`}>Voir fiche produit</Link></p>
+                
               </article> 
               );
             })
@@ -92,5 +95,6 @@ const Accueil = () => {
       <Footer />
     </>
   );
+  
 };
 export default Accueil;

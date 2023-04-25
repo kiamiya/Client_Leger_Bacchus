@@ -1,0 +1,45 @@
+.winechoice {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	/*padding: 40px 20px;*/
+
+}
+.title-bottle{
+	min-height: 75px;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}	
+.cards {
+	margin-bottom: 50px;
+	
+}
+.container {
+	max-width: 1200px;
+}
+/*Add color*/
+
+.articles {
+
+	width: 300px;   
+	background-color: #45322e;
+	border: 5px solid black;
+	box-shadow: 15px 10px 5px grey;
+	text-align: center;
+}
+.linkproduct {
+    color: #dff0d8;
+}
+h3 {
+	color: #dff0d8;
+}
+body {
+	color: #dff0d8;	
+	
+}
+p{
+	color: #dff0d8;
+}
